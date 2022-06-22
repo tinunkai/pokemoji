@@ -17,10 +17,12 @@ def main():
         no, _ = os.path.splitext(name)
         en, ja, ch = names[int(no) - 1]
         try:
-            rst["emojis"].append({
-                "name": f"pm{no}-{ch}-{ja}-{en}",
-                "src": f"https://raw.githubusercontent.com/tinunkai/pokemoji/main/emojis/{no}.png",
-            })
+            rst["emojis"].append(
+                {
+                    "name": f"pm{no}-{ch}-{ja}-{en}",
+                    "src": f"https://raw.githubusercontent.com/tinunkai/pokemoji/main/emojis/{no}.png",
+                }
+            )
             print(no, ch, ja, en)
         except:
             print(f"error:{no}")

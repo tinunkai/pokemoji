@@ -230,7 +230,7 @@
 230	刺龙王	キングドラ	kingdra
 231	小小象	ゴマゾウ	phanpy
 232	顿甲	ドンファン	donphan
-233	多边兽ⅱ	ポリゴン２	porygon2
+233	多边兽ii	ポリゴン２	porygon2
 234	惊角鹿	オドシシ	stantler
 235	图图犬	ドーブル	smeargle
 236	无畏小子	バルキー	tyrogue
@@ -436,7 +436,7 @@
 436	铜镜怪	ドーミラー	bronzor
 437	青铜钟	ドータクン	bronzong
 438	盆才怪	ウソハチ	bonsly
-439	魔尼尼	マネネ	mime jr.
+439	魔尼尼	マネネ	mimejr
 440	小福蛋	ピンプク	happiny
 441	聒噪鸟	ペラップ	chatot
 442	花岩怪	ミカルゲ	spiritomb
@@ -769,7 +769,7 @@
 769	沙丘娃	スナバァ	sandygast
 770	噬沙堡爷	シロデスナ	palossand
 771	拳海参	ナマコブシ	pyukumuku
-772	属性：空	タイプ：ヌル	type: null
+772	属性空	タイプ：ヌル	typenull
 773	银伴战兽	シルヴァディ	silvally
 774	小陨星	メテノ	minior
 775	树枕尾熊	ネッコアラ	komala
@@ -782,10 +782,10 @@
 782	心鳞宝	ジャラコ	jangmo-o
 783	鳞甲龙	ジャランゴ	hakamo-o
 784	杖尾鳞甲龙	ジャラランガ	kommo-o
-785	卡璞・鸣鸣	カプ・コケコ	tapu koko
-786	卡璞・蝶蝶	カプ・テテフ	tapu lele
-787	卡璞・哞哞	カプ・ブルル	tapu bulu
-788	卡璞・鳍鳍	カプ・レヒレ	tapu fini
+785	卡璞鸣鸣	カプ・コケコ	tapukoko
+786	卡璞蝶蝶	カプ・テテフ	tapulele
+787	卡璞哞哞	カプ・ブルル	tapubulu
+788	卡璞鳍鳍	カプ・レヒレ	tapufini
 789	科斯莫古	コスモッグ	cosmog
 790	科斯莫姆	コスモウム	cosmoem
 791	索尔迦雷欧	ソルガレオ	solgaleo
@@ -862,8 +862,8 @@
 862	堵拦熊	タチフサグマ	obstagoon
 863	喵头目	ニャイキング	perrserker
 864	魔灵珊瑚	サニゴーン	cursola
-865	葱游兵	ネギガナイト	sirfetch’d
-866	踏冰人偶	バリコオル	mr. rime
+865	葱游兵	ネギガナイト	sirfetchd
+866	踏冰人偶	バリコオル	mrrime
 867	死神板	デスバーン	runerigus
 868	小仙奶	マホミル	milcery
 869	霜奶仙	マホイップ	alcremie

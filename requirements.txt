@@ -2,3 +2,4 @@ cssjson
 Pillow
 numpy
 PyYAML
+requests

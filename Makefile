@@ -1,4 +1,4 @@
-all: yml
+all: upload
 
 main:
 	@.venv/bin/python main.py
@@ -8,6 +8,12 @@ yml:
 
 init:
 	python3 -m venv .venv
+
+rm:
+	@.venv/bin/python rm.py
+
+upload:
+	@.venv/bin/python upload.py
 
 install:
 	.venv/bin/pip install --upgrade pip
