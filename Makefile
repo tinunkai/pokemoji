@@ -1,7 +1,10 @@
-all: main
+all: yml
 
 main:
 	@.venv/bin/python main.py
+
+yml:
+	@.venv/bin/python yml.py
 
 init:
 	python3 -m venv .venv

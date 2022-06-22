@@ -1,3 +1,4 @@
 cssjson
 Pillow
 numpy
+PyYAML
