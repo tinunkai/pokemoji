@@ -14,9 +14,7 @@ def main():
         attr = attr["attr"]
         if "background" in attr:
             continue
-        no = name[13:16]
-        if name[16:] or no == "Egg":
-            continue
+        no = name[13:]
         x, y = map(int, attr["background-position"].replace("px", "").split(" "))
         cim = im.crop((-x, -y, -x + w, -y + h))
         cim = trim(cim).resize((128, 128), Image.NEAREST)
