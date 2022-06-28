@@ -15,11 +15,24 @@ def main():
     for name in sorted(os.listdir("./emojis")):
         no, _ = os.path.splitext(name)
         if no == "Egg":
-            ch = en = no
+            ja = ch = en = no
         else:
             _, en, ja, ch = names[int(no[:3]) - 1]
         fail = True
         while fail:
+            r = requests.post(
+                keys.url + "/emoji.remove",
+                data={
+                    "token": keys.token,
+                    "name": f"pm-{no.lower()}-{ch}-{en}",
+                },
+                headers={
+                    "Cookie": keys.cookie,
+                },
+            )
+            if not (r.json()["ok"] or r.json()["error"] == "emoji_not_found"):
+                print(f"retry rm {no} {ch}: {r.json()['error']}")
+                continue
             with open(f"./emojis/{no}.png", "rb") as f:
                 r = requests.post(
                     keys.url + "/emoji.add",

@@ -48,6 +48,8 @@ def trim(cim):
     wc = x2 - x1
     hc = y2 - y1
     cc = max(x2 - x1 + 1, y2 - y1 + 1)
+    x1 = (x1 + x2 + 1) // 2 - cc // 2
+    y1 = (y1 + y2 + 1) // 2 - cc // 2
     cim = cim.crop((x1, y1, x1 + cc, y1 + cc))
     return cim
 
