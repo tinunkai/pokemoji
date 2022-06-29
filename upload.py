@@ -63,6 +63,8 @@ def gif():
     for name in sorted(os.listdir("./gifs")):
         no, _ = os.path.splitext(name)
         _, en, ja, ch = names[int(no[:3]) - 1]
+        if int(no[:3]) < 1:
+            continue
         fail = True
         while fail:
             r = requests.post(
@@ -77,6 +79,7 @@ def gif():
             )
             if not (r.json()["ok"] or r.json()["error"] == "emoji_not_found"):
                 print(f"retry rm {no} {ch}: {r.json()['error']}")
+                time.sleep(random.uniform(1, 2))
                 continue
             with open(f"./gifs/{no}.gif", "rb") as f:
                 r = requests.post(
@@ -93,10 +96,13 @@ def gif():
                         "Cookie": keys.cookie,
                     },
                 )
-                print(no, f"gif-{no}-{ch}", r.json())
+                print(no, f"gif-{no}-{ch}", r.text)
                 if r.json()["ok"] or r.json()["error"] == "error_name_taken":
                     fail = False
-                time.sleep(random.uniform(1, 2))
+                elif r.json()["error"] == "resized_but_still_too_large":
+                    raise Exception
+                else:
+                    time.sleep(random.uniform(1, 2))
 
 
 if __name__ == "__main__":
