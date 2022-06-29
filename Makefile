@@ -1,19 +1,11 @@
-all: upload
+.PHONY: init install
+all: resize
 
-main:
-	@.venv/bin/python main.py
-
-yml:
-	@.venv/bin/python yml.py
+%: %.py
+	@.venv/bin/python $<
 
 init:
 	python3 -m venv .venv
-
-rm:
-	@.venv/bin/python rm.py
-
-upload:
-	@.venv/bin/python upload.py
 
 install:
 	.venv/bin/pip install --upgrade pip
