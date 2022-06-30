@@ -33,38 +33,32 @@ def trim(cim):
 def main():
     for no in range(1, 387):
         no = f"{no:03d}"
-        duration = list()
         for s in ("", "s"):
             gifs = list()
+            duration = list()
             ims = Image.open(f"./origins/{no}{s}.gif")
             x1, y1 = ims.size
             x2, y2 = 0, 0
-            for idx in range(1, ims.n_frames):
+            step = 2 if ims.n_frames > 80 else 1
+            for idx in range(1, ims.n_frames, step):
                 ims.seek(idx)
                 cx1, cy1, cx2, cy2 = trim(ims)
                 x1 = min(cx1, x1)
                 y1 = min(cy1, y1)
                 x2 = max(cx2, x2)
                 y2 = max(cy2, y2)
-            wc = x2 - x1
-            hc = y2 - y1
             cc = max(x2 - x1 + 1, y2 - y1 + 1)
             x1 = (x1 + x2 + 1) // 2 - cc // 2
             y1 = (y1 + y2 + 1) // 2 - cc // 2
-            for idx in range(1, ims.n_frames):
-                if no == "249" and s and idx % 2 == 1:
-                    continue
+            for idx in range(1, ims.n_frames, step):
                 ims.seek(idx)
-                if ims.disposal_method == 1:
-                    continue
-                gifs.append(ims.crop((x1, y1, x1 + cc, y1 + cc)).resize((64, 64), 0))
-                if s == "":
-                    duration.append(ims.info["duration"] * 2)
+                gifs.append(ims.crop((x1, y1, x1 + cc, y1 + cc)).resize((128, 128), 0))
+                duration.append(ims.info["duration"] * 2)
             duration[-1] = 1000
             gifs[0].save(
                 f"./gifs/{no}{s}.gif",
                 save_all=True,
-                append_images=gifs[1 : len(duration) - 1],
+                append_images=gifs[1:],
                 loop=0,
                 transparency=0,
                 disposal=2,
