@@ -1,5 +1,5 @@
 .PHONY: init install
-all: resize
+all: upload
 
 %: %.py
 	@.venv/bin/python $<

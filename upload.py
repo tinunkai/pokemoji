@@ -105,5 +105,52 @@ def gif():
                     time.sleep(random.uniform(1, 2))
 
 
+def item():
+    for file in sorted(os.listdir("./items")):
+        name, _ = os.path.splitext(file)
+        name = name.translate(
+            str.maketrans({chr(0xFF01 + i): chr(0x21 + i) for i in range(94)})
+        ).lower().replace(" ", "")
+        name = f"item-{name}"
+        while True:
+            r = requests.post(
+                keys.url + "/emoji.remove",
+                data={
+                    "token": keys.token,
+                    "name": name,
+                },
+                headers={
+                    "Cookie": keys.cookie,
+                },
+            )
+            if not (r.json()["ok"] or r.json()["error"] == "emoji_not_found"):
+                print(f"retry {name}: {r.json()['error']}")
+                time.sleep(random.uniform(1, 2))
+                continue
+            with open(f"./items/{file}", "rb") as f:
+                r = requests.post(
+                    keys.url + "/emoji.add",
+                    data={
+                        "token": keys.token,
+                        "name": name,
+                        "mode": "data",
+                    },
+                    files={
+                        "image": f,
+                    },
+                    headers={
+                        "Cookie": keys.cookie,
+                    },
+                )
+                print(name)
+                if r.json()["ok"] or r.json()["error"] == "error_name_taken":
+                    break
+                elif r.json()["error"] == "resized_but_still_too_large":
+                    raise Exception
+                else:
+                    print(r.json()["error"])
+                    time.sleep(random.uniform(1, 2))
+
+
 if __name__ == "__main__":
-    gif()
+    item()

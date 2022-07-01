@@ -27,5 +27,22 @@ def main():
             print(f"{no}{s}")
 
 
+def item():
+    r = requests.get(
+        "https://wiki.52poke.com/wiki/%E9%81%93%E5%85%B7%E5%88%97%E8%A1%A8"
+    )
+    tree = etree.fromstring(r.content, parser=etree.HTMLParser())
+    for img in tree.xpath('//*[@id="mw-content-text"]/div//img')[:-2]:
+        name = img.attrib["alt"]
+        if name == "未知":
+            continue
+        print(name)
+        img_url = "https:" + img.attrib["data-url"]
+        print(img_url)
+        r = requests.get(img_url)
+        with open(f"./items/{name}.png", "wb") as f:
+            f.write(r.content)
+
+
 if __name__ == "__main__":
-    main()
+    item()
